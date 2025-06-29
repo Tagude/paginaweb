@@ -154,7 +154,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="columna columna-41  columna-mobile-100 empujar-58 empujar-mobile-0 sinpadding-mobile">
-                            <form action="index.php" method="post">
+                            <form action="enviar.php" method="post">
                                 <div class="form-block">
                                     <input type="text" name="nombre" class="form-control" placeholder="Nombre">
                                 </div>
@@ -185,9 +185,8 @@
 
                                                 mail($para,$asunto,$cuerpo,$adicional);
                                             ?>
+                                                <p>Gracias, Tu mensaje ha sido enviado.</p>
                                             <?php
-                                            } else {
-                                                echo "<p>Error: El mensaje no puede estar vacío.</p>";
                                             }
                                         }
                                     }
