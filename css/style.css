@@ -45,6 +45,11 @@ header .container nav a {
     margin: 0 15px;
     }
 
+header .container .hamb {
+    display: none;
+    position: relative;
+}
+
 footer {
     background-color: black;
     color: white;
@@ -358,6 +363,10 @@ footer a {
         transform: translateX(100%);
     }
 
+    header .container nav.open {
+        transform: translateX(0);
+    }
+
     header .container nav a {
         font-size: 30px;
         margin: 15px 0;
@@ -367,6 +376,7 @@ footer a {
         display: block;
         font-size: 40px;
         color: red;
+        position: relative;
     }
 
     form .boton.boton-negro {

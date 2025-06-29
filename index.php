@@ -19,7 +19,7 @@
     <body>
         <header>
             <div class="container">
-            <a href="index.html">
+            <a href="index.php" class="logo">    
                 <img src ="img/logo.svg" class="logo">
             </a>
             <nav>
@@ -64,7 +64,7 @@
                                     <img src="img/servicio1.jpg">
                                 </div>
                                 <div class="bloque-contenido-servicio">
-                                    <h3>Servicio 1</h3>
+                                    <h3>Ventas</h3>
                                     <p>Venta y distribución de bebidas refrescantes.
                                         Nos aseguramos de que nuestros productos lleguen a todos los rincones del país,
                                         ofreciendo un servicio rápido y eficiente.
@@ -79,7 +79,7 @@
                                     <img src="img/servicio2.jpg">
                                 </div>
                                 <div class="bloque-contenido-servicio">
-                                    <h3>Servicio 2</h3>
+                                    <h3>Experiencias</h3>
                                     <p>Eventos y promociones especiales.
                                         Creamos experiencias únicas para nuestros consumidores,
                                         organizando eventos y promociones que resaltan la alegría de compartir Coca Cola.
@@ -94,7 +94,7 @@
                                     <img src="img/servicio3.jpg">
                                 </div>
                                 <div class="bloque-contenido-servicio">
-                                    <h3>Servicio 3</h3>
+                                    <h3>Soporte</h3>
                                     <p>Atención al cliente y soporte.
                                         Nuestro equipo está siempre disponible para atender las consultas y necesidades de nuestros consumidores,
                                         garantizando una experiencia satisfactoria con nuestros productos.
@@ -154,7 +154,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="columna columna-41  columna-mobile-100 empujar-58 empujar-mobile-0 sinpadding-mobile">
-                            <form action=" " method="post">
+                            <form action="index.php" method="post">
                                 <div class="form-block">
                                     <input type="text" name="nombre" class="form-control" placeholder="Nombre">
                                 </div>
@@ -169,6 +169,30 @@
                                         Enviar
                                     </button>
                                 </div>
+                                <?php
+                                if($_SERVER["REQUEST_METHOD"] == "POST") {
+                                    $nombre = ($_POST['nombre']);
+                                    $email = ($_POST['email']);
+                                    $mensaje = ($_POST['mensaje']);
+
+                                    if(isset($nombre)){
+                                        if(isset($email)){
+                                            if(isset($mensaje)){
+                                                $para = "tania.agudelomurillo@gmail.com"; // Aquí debes colocar el correo electrónico al que quieres enviar el mensaje.
+                                                $asunto = "esto es una prueba";
+                                                $cuerpo = $nombre."\n".$email."\n".$mensaje;
+                                                $adicional = "From: noreply@example.com";
+
+                                                mail($para,$asunto,$cuerpo,$adicional);
+                                            ?>
+                                            <?php
+                                            } else {
+                                                echo "<p>Error: El mensaje no puede estar vacío.</p>";
+                                            }
+                                        }
+                                    }
+                                }
+                                ?>
                             </form>
                             <h2>Contáctanos</h2>
                         </div>
@@ -224,5 +248,7 @@
                 &copy; 2023 Coca Cola. Todos los derechos reservados.
             </div>
         </footer>
+        <script src="js/jquery.js"></script>
+        <script src="js/funciones.js"></script>
     </body>
 </html>
